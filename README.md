@@ -7,7 +7,7 @@ Duration: 14-18 December 2022
 
 Instructor: Dr. Nanditha Rao
 
-[Agenda of the workshop:]{www.youtube.com}
+[Agenda of the workshop:](www.youtube.com)
 Day1: 
 1. Introduction to FPGA
 2. Counter example using Vivado

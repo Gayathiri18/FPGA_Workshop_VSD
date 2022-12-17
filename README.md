@@ -9,7 +9,8 @@ Instructor: Dr. Nanditha Rao
 
 # Agenda of the workshop:
 Day1: 
-[1.1. Introduction to FPGA](# 1.1. Introduction to FPGA)
+[1.1. Introduction to FPGA](# 1.1._Introduction_to_FPGA)
+
 [1.2. Counter example using Vivado]
 [1.3. Counter Verilog explanation and implementation using Vivado]
 [1.4. Vivado timing, power, and area measurement for counter]
@@ -37,8 +38,10 @@ Day5:
 3. Steps to generate rvmyth post-implementation netlist
 4. Confirm RVmyth on SOFA behavioral simulation using Vivado
 
-# 1.1. Introduction to FPGA
+# 1.1._Introduction_to_FPGA
+
 FPGA:
+
   -Generate customisable hardware
   -Study the effect of area, speed and power of the digital circuits.
   -Logic disgn in FGPA includes: LUTs, Flipflops, configurable CLBs.

@@ -29,9 +29,6 @@ Day1:
      - [Utilization Report](#utilization-report)
    - [Bitsream Generation](#bitstream-generation)
    - [Virtual Input-Output](#virtual-input-output)
-- [1.3. Counter Verilog explanation and implementation using Vivado]
-- [1.4. Vivado timing, power, and area measurement for counter]
-- [1.5. Introduction to VIO]
 
 Day2:
 1. Introduction to OpenFPGA and VTR (verilog-to-routing)

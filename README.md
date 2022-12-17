@@ -8,13 +8,14 @@ Duration: 14-18 December 2022
 Instructor: Dr. Nanditha Rao
 
 # Agenda of the workshop:
-Day1: 
-[1.1. Introduction to FPGA](# 1.1._Introduction_to_FPGA)
+Day1: \
 
-[1.2. Counter example using Vivado]
-[1.3. Counter Verilog explanation and implementation using Vivado]
-[1.4. Vivado timing, power, and area measurement for counter]
-[1.5. Introduction to VIO]
+- [1.1. Introduction to FPGA](#1.1._Introduction_to_FPGA)
+
+-[1.2. Counter example using Vivado]
+-[1.3. Counter Verilog explanation and implementation using Vivado]
+-[1.4. Vivado timing, power, and area measurement for counter]
+-[1.5. Introduction to VIO]
 
 Day2:
 1. Introduction to OpenFPGA and VTR (verilog-to-routing)
@@ -38,7 +39,7 @@ Day5:
 3. Steps to generate rvmyth post-implementation netlist
 4. Confirm RVmyth on SOFA behavioral simulation using Vivado
 
-# 1.1._Introduction_to_FPGA
+# 1.1. Introduction to FPGA
 
 FPGA:
 

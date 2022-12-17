@@ -10,7 +10,7 @@ Instructor: Dr. Nanditha Rao
 # Agenda of the workshop:
 Day1: \
 
-- [1.1. Introduction to FPGA](#1.1._Introduction_to_FPGA)
+- [Introduction to FPGA](#1.1._Introduction_to_FPGA)
 
 -[1.2. Counter example using Vivado]
 -[1.3. Counter Verilog explanation and implementation using Vivado]
@@ -39,7 +39,7 @@ Day5:
 3. Steps to generate rvmyth post-implementation netlist
 4. Confirm RVmyth on SOFA behavioral simulation using Vivado
 
-# 1.1. Introduction to FPGA
+# Introduction to FPGA
 
 FPGA:
 
@@ -54,5 +54,5 @@ FPGA:
   |Cannot be reprogrammed                       |Can be reprogrammed          |
   -FPGA Architecture
   
-  <img src: "/images_fpga/fpga_architecture.png">
+  <img src="images_fpga/fpga_architecture.png">
 

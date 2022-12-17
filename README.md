@@ -14,10 +14,15 @@ Day1:
   - [FPGA vs ASIC Comparison](#fpga-vs-asic-comparison)
   - [FPGA Architecture](#fpga-architecture)
   - [Introduction to Basys 3 FPGA Board](#introduction-to-basys-3-fpga-board)
-- [1.2. Counter example using Vivado]
--[1.3. Counter Verilog explanation and implementation using Vivado]
--[1.4. Vivado timing, power, and area measurement for counter]
--[1.5. Introduction to VIO]
+- [Counter example using Vivado](counter-example-using-vivado)
+  - [Behavioural Simulation of 4-bit counter](#behavioural-simulation-of-4-bit-counter)
+    - [RTL Description for 4-bit counter](#rtl-description-for-4-bit-counter)
+    - [Output Waveform](#output-waveform)
+   - [Elaborated Design](#elaborated-design)
+     - [IO Constraints](#io-constraints)
+- [1.3. Counter Verilog explanation and implementation using Vivado]
+- [1.4. Vivado timing, power, and area measurement for counter]
+- [1.5. Introduction to VIO]
 
 Day2:
 1. Introduction to OpenFPGA and VTR (verilog-to-routing)
@@ -62,8 +67,8 @@ FPGA:
   | Cannot be reprogrammed                        | Can be reprogrammed           |
   
   ## FPGA Architecture
-    
-    The basic architecture of FPGA is given as below:
+  
+  The basic architecture of FPGA is given as below.
   
   <img src="images_fpga/fpga_architecture.png">
   
@@ -87,4 +92,147 @@ FPGA:
   |    6    | LEDs (16)                      |    14   | External power connector        |
   |    7    | Pushbuttons (5)                |    15   | Power Switch                    |
   |    8    | FPGA programming done LED      |    16   | Power Select Jumper             |
+
+# Counter example using Vivado
+
+- Counters are sequential logic circuits that proceed through a well defined sequence of states after application of clock pulses.
+- Counters are used for a counting pulses.
+- Counters are constructed using Flipflops and logic gates.
+
+## Behavioural Simulation of 4-bit counter
+### RTL Description for 4-bit counter
+- The RTL Code for 4-bit counter is given as follows and is to be implemented in Xilinx Vivado tool.
+
+Verilog code:
+```
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Description: 4 bit counter with source clock (100MHz) division.
+
+/*
+
+////////////4 bit counter block///////////////////
+always @(posedge clk)
+begin
+
+if(rst)
+begin
+counter_out<=4'b0000;
+//div_clk <= 1'b0;
+end
+else
+begin
+counter_out<= counter_out+1;
+end
+end
+
+endmodule 
+
+*/
+
+//////////////////////////////////////////////////////////////////////////////////
+module counter_clk_div(clk,rst,counter_out);
+input clk,rst;
+reg div_clk;
+reg [25:0] delay_count;
+output reg [3:0] counter_out;
+
+//////////clock division block////////////////////
+
+
+always @(posedge clk)
+begin
+
+if(rst)
+begin
+delay_count<=26'd0;
+//counter_out<=4'b0000;
+div_clk <= 1'b0; //initialise div_clk
+
+
+//uncomment this line while running just the div clock counter for simulation purpose
+//counter_out<=4'b0000;
+end
+else
+
+//uncomment this line while running just the div clock counter for simulation purpose
+if(delay_count==26'd212)
+
+//comment this line while running just the div clock counter for simulation purpose
+//if(delay_count==26'd32112212)
+begin
+delay_count<=26'd0; //reset upon reaching the max value
+div_clk <= ~div_clk;  //generating a slow clock
+end
+else
+begin
+delay_count<=delay_count+1;
+end
+end
+
+
+/////////////4 bit counter block///////////////////
+always @(posedge div_clk)
+begin
+
+if(rst)
+begin
+counter_out<=4'b0000;
+end
+else
+begin
+counter_out<= counter_out+1;
+end
+end
+
+endmodule 
+```
+
+Run the verilog code along with the following testbench file for the verification of counter behaviour.
+
+Testbench code:
+```
+`timescale 1ns / 1ps
+
+module test_counter();
+reg clk, reset;
+wire [3:0] out;
+
+//create an instance of the design
+counter_clk_div dut(clk, reset, out);  
+
+initial begin
+clk=0;  //at time=0
+reset=1;//at time=0
+#20; //delay 20 units
+reset=0; //after 20 units of time, reset becomes 0
+end
+
+always 
+#5 clk=~clk;  // toggle or negate the clk input every 5 units of time
+
+endmodule 
+```
+
+### Output Waveform
+The output waveform for 4-bit counter is as follows:
+
+<img src="images_fpga/output_waveform.png">
+
+## Elaborated Design
+- In the RTL Analysis section of the Flow Navigator, select Open Elaborated Design to load the elaborated netlist, the active constraint set, and the target device into memory.
+- The schematic for the 4-bit counter will be obtained after simulation which is shown as below.
+  
+  <img src="images_fpga/elaborated_design_schematic.png">
+
+### IO Constraints
+  - The IO Constraints has to be given by providing the Package Pin and Standard Pin details in I/O planning view.
+  - I/O Planning view can be changed from default layout on top right corner of Vivado tool.
+
+The constraints for input and output ports are given as follows in the tool.
+
+<img src="images_fpga/constraints_counter.png">
+
+The constraints can also be viewd as .xdc file under constraints tab in sources.
 

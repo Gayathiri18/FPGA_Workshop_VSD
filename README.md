@@ -14,7 +14,7 @@ Day1:
   - [FPGA vs ASIC Comparison](#fpga-vs-asic-comparison)
   - [FPGA Architecture](#fpga-architecture)
   - [Introduction to Basys 3 FPGA Board](#introduction-to-basys-3-fpga-board)
-- [Counter example using Vivado](counter-example-using-vivado)
+- [Counter example using Xilinx Vivado](counter-example-using-xilinx-vivado)
   - [Behavioural Simulation of 4-bit counter](#behavioural-simulation-of-4-bit-counter)
     - [RTL Description for 4-bit counter](#rtl-description-for-4-bit-counter)
     - [Output Waveform](#output-waveform)
@@ -99,7 +99,7 @@ FPGA:
   |    7    | Pushbuttons (5)                |    15   | Power Switch                    |
   |    8    | FPGA programming done LED      |    16   | Power Select Jumper             |
 
-# Counter example using Vivado
+# Counter example using Xilinx Vivado
 
 - Counters are sequential logic circuits that proceed through a well defined sequence of states after application of clock pulses.
 - Counters are used for a counting pulses.

@@ -31,7 +31,7 @@ Day1:
    - [Virtual Input-Output](#virtual-input-output)
 
 Day2:
-1. Introduction to OpenFPGA and VTR (verilog-to-routing)
+- [Introduction to OpenFPGA and VTR](#introduction-to-openfpga-and-vtr)
 2. Introduction to VPR (versatile-place-and-route) using basic Earch fabric
 3. Counter example using VPR/VTR openfpga flow
 
@@ -319,3 +319,4 @@ The schematic of the implemented design is shown as below.
    
 - By ding so, we can check the inputs and outputs virtually by connecting to the target hardware
  
+# Introduction to OpenFPGA and VTR
